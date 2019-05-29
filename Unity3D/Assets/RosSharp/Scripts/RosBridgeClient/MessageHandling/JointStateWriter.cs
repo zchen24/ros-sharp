@@ -22,6 +22,8 @@ namespace RosSharp.RosBridgeClient
     [RequireComponent(typeof(Joint)), RequireComponent(typeof(UrdfJoint))]
     public class JointStateWriter : MonoBehaviour
     {
+        [SerializeField] private float scale = 1.0f;
+    
         private UrdfJoint urdfJoint;
 
         private float newState; // rad or m
@@ -50,7 +52,7 @@ namespace RosSharp.RosBridgeClient
 
         public void Write(float state)
         {
-            newState = state;
+            newState = state * scale;
             isNewStateReceived = true;
         }
     }
